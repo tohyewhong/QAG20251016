@@ -1,0 +1,99 @@
+[project]
+name = "qag-agent"
+version = "0.1.0"
+description = "QAG Agent: Generating synthetic questions and answers using agents."
+authors = [
+  { name="Khang Zhie Phoong", email="phoongzk@gmail.com" },
+]
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "torch==2.5.1",
+    "transformers==4.49.0",
+    "tokenizers==0.21.0",
+    "datasets==3.3.2",
+    "vllm==0.7.3",
+    "mistralai==1.5.0",
+    "mistral-common>=1.5.3",
+    "langchain==0.3.19",
+    "langchain-core>=0.3.35,<1.0.0",
+    "langgraph==0.3.1",
+    "langchain-community==0.3.18",
+    "pyyaml>=6.0.2",
+    "polars>=1.22.0",
+    "tomli-w>=1.2.0", # for writing TOML files
+    "pynvml>=12.0.0",
+    "langchain-openai>=0.3.7",
+    "bitsandbytes>=0.47.0",
+    "langchain-cerebras>=0.5.0",
+    "langchain-huggingface>=0.3.1",
+]
+
+[dependency-groups]
+dev = [
+    "docformatter>=1.7.5",
+    "pre-commit>=4.1.0",
+    "pyright>=1.1.394",
+    "pytest>=8.3.4",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.9.7",
+    "typos>=1.29.9",
+    "debugpy-run>=1.8.9",
+    "vulture>=2.14",
+]
+
+[tool.uv]
+package = true
+python-preference = "only-managed" # without this, python env might get contaminated by conda envs on rno
+
+[tool.pyright]
+reportMissingTypeStubs = false
+include = ["src/**"]
+exclude = ["**/__pycache__"]
+
+[tool.typos.default]
+extend-ignore-identifiers-re = ["arange"]
+
+[tool.ruff]
+include = ["src/**"]
+line-length = 88
+target-version = "py312"
+preview = true
+
+[tool.ruff.lint]
+preview = true
+select = [
+  "B006",   # Do not use mutable data structures for argument defaults
+  "E",      # Code style
+  "F",      # Pyflakes
+  "W",      # Code style warnings
+  "C90",    # Check complexity
+  "I",      # Sort imports
+  "C4",     # Check comprehensions
+  "PT",     # Pytest style
+  "RSE",    # Raise statements
+  "TID",    # Tidy imports
+  "TC",    # Type checking (warning, this was renamed into TC on ruff v0.8.0)
+  "FLY",    # String formatting converter (%-strings to f-strings)
+  "NPY",    # Numpy specific rules
+  "RUF",    # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
+  "T10",    # Check for dbg left overs
+  "Q",      # Check for quotes usage
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.ruff.lint.mccabe]
+max-complexity = 20
+
+[tool.ruff.format]
+preview = true
+skip-magic-trailing-comma = true
+
+
+[tool.docformatter]
+black = true
+
+[tool.vulture]
+ignore_decorators = ["*command", "*field_validator", "*model_validator", "@dataclass", "@app.callback"]

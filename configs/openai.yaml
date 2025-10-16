@@ -1,0 +1,13 @@
+# OpenAI API Configuration for QAG Agent
+
+# Data paths
+data_path: data/musique/train-data.jsonl
+output_dir: output/musique
+
+# OpenAI API settings
+openai_api_key: YOUR_OPENAI_API_KEY_HERE  # Replace with your actual API key
+openai_api_base: https://api.openai.com/v1  # Official OpenAI API
+model_name: gpt-4o-mini  # Fast and cost-effective model
+
+# Disable tool calling for OpenAI API (use simple text responses)
+disable_tool_calling: true
