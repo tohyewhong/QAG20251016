@@ -1,6 +1,6 @@
 output/
 scripts/
-data/
+# data/  # Commented out to include training data files
 
 # Temporary files and logs
 *.log
