@@ -1,6 +1,0 @@
-host: localhost
-port: 8000
-
-output_dir: output/musique
-data_path: data/musique/train-data.jsonl
-model_name: Qwen2-1.5B-Instruct
