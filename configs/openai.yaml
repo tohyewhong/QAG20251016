@@ -1,7 +1,7 @@
 # OpenAI API Configuration for QAG Agent
 
 # Data paths
-data_path: data/musique/train-data.jsonl
+data_path: data/musique/train-data-sample.jsonl
 output_dir: output/musique
 
 # OpenAI API settings
